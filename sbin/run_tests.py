@@ -1,6 +1,7 @@
 import subprocess
 import time
 import os
+import io
 import re
 import sys
 import json
@@ -81,7 +82,7 @@ while (not os.path.exists(outfile) or os.stat(outfile).st_size == 0):
 print("\nstart to read output")
 
 # todo: use notification instead of polling
-with open(outfile, 'r') as f:
+with io.open(outfile, 'r', encoding='utf8') as f:
     while True:
         where = f.tell()
         result = f.read()
